@@ -1,4 +1,4 @@
-// 1. String Reversal 
+// ========== 1. String Reversal ========== // 
 
 // Chaining in-built methods
 const reverseString = (text) => {
@@ -41,7 +41,45 @@ const getBackJoJo2 = (text) => {
 // Using Reduce // Most Optimal
 const getBackJoJo3 = (text) => [...text].reduce((acc, char) => char + acc, '');
 
-document.getElementById('solution').innerText = getBackJoJo3('thewalruswaspaul');
+document.getElementById('string-solution').innerText = getBackJoJo3('thewalruswaspaul');
+
+
+
+// ========== 2. Count the Vowels ========== //
+
+// An Iterative Approach
+const vowels = ['a', 'e', 'i', 'o', 'u'];
+
+const vowelsCounter = (text) => {
+	// initialize counter
+	let counter = 0;
+
+	// loop through the text to test if each character is a vowel
+	for (let letter of text.toLowerCase()) {
+		if (vowels.includes(letter)) {
+			counter++
+		}
+	}
+
+	// return number of vowels
+	return counter;
+}
+
+// Using Regular Expressions
+const vowelsCounter2 = (text) => {
+	// search text with regex and store all matches
+	let matchingInstances = text.match(/[aeiou]/gi);
+
+	// check if matches exist, then calculate length
+	if (matchingInstances) {
+		// return number of vowels
+		return matchingInstances.length
+	} else {
+		return 0
+	}
+}
+
+document.getElementById('vowel-solution').innerText = vowelsCounter2('you got the silver');
 
 
 
