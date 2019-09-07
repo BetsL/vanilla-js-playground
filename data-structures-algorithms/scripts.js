@@ -65,7 +65,7 @@ const vowelsCounter = (text) => {
 	return counter;
 }
 
-// Using Regular Expressions
+// Using Regular Expressions // More Optimal
 const vowelsCounter2 = (text) => {
 	// search text with regex and store all matches
 	let matchingInstances = text.match(/[aeiou]/gi);
@@ -85,7 +85,7 @@ document.getElementById('vowel-solution').innerText = vowelsCounter2('you got th
 
 // ========== 3. The Most Recurring Character ========== //
 
-// For ... in Iteration - somewhat more optimal ~30%
+// For ... in Iteration // Somewhat More Optimal ~30%
 const maxRecurringChar = (text) => {
 	let charMap = {};
 	let maxCharValue = 0;
@@ -132,6 +132,46 @@ const maxRecurringChar2 = (text) => {
 }
 
 document.getElementById('max-char-solution').innerText = maxRecurringChar2('Tierney');
+
+
+
+// ========== 4. Sentence Capitalization ========== //
+
+// Using .forEach() Method
+const capSentence = (text) => {
+	let wordsArray = text.toLowerCase().split(' ');
+	let capsArray = [];
+
+	wordsArray.forEach(word => {
+		capsArray.push(word[0].toUpperCase() + word.slice(1))
+	});
+
+	return capsArray.join(' ');
+}
+
+// Using .map() and .slice() // Most Optimal
+const capMe = (text) => {
+	let wordsArray = text.toLowerCase().split(' ');
+	
+	let capsArray = wordsArray.map(word => {
+		return word[0].toUpperCase() + word.slice(1)
+	})
+
+	return capsArray.join(' ');
+}
+
+// Using .map() and .replace()
+const capIt = (text) => {
+	let wordsArray = text.toLowerCase().split(' ');
+
+	let capsArray = wordsArray.map(word => {
+		return word.replace(word[0], word[0].toUpperCase())
+	});
+
+	return capsArray.join(' ');
+}
+
+document.getElementById('sentence-cap-solution').innerText = capIt('freshly ground coffee sold here daily forever!');
 
 
 
