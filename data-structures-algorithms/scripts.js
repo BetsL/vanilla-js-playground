@@ -175,6 +175,42 @@ document.getElementById('sentence-cap-solution').innerText = capIt('freshly grou
 
 
 
+// ========== 5. Palindromes ========== //
+
+// Super Direct ...
+const palindromeChecker = (text) => {
+	let reversedText = text.toLowerCase()
+		.split('').reverse().join('')
+
+	return text === reversedText;
+}
+
+// Looping through and Comparing Characters
+const palindromeChecker2 = (text) => {
+	let charArray = text.toLowerCase().split('');
+
+	let result = charArray.every((letter, index) => {
+		return letter === charArray[charArray.length - index - 1];
+	})
+
+	return result;
+}
+
+// Looping through and Comparing Characters (Optimized)
+const palindromeChecker3 = (text) => {
+	let textLen = text.length;
+	for (var i = 0; i < textLen/2; i++) {
+		if (text[i] !== text[textLen - 1 - i]) {
+			return false;
+		}
+	}
+	return true;
+}
+
+document.getElementById('palindrome-solution').innerText = palindromeChecker3('yep');
+
+
+
 
 
 
