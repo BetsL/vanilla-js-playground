@@ -211,6 +211,32 @@ document.getElementById('palindrome-solution').innerText = palindromeChecker3('y
 
 
 
+// ========== 6. Hamming Distance ========== //
+
+// Using a For-Loop
+const hammingDistance = (stringA, stringB) => {
+    let result = 0;
+
+    if (stringA.length === stringB.length) {
+
+        for (let i = 0; i < stringA.length; i++) {
+            if (stringA[i].toLowerCase() !== stringB[i].toLowerCase()) {
+                result++
+            }
+        }
+
+        return result;
+
+    } else {
+        throw new Error('strings do not have equal length')
+    }
+}
+
+document.getElementById('hamming-distance-solution').innerText = hammingDistance('rover', 'river');
+
+
+
+
 
 
 
