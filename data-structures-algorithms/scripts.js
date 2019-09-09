@@ -236,6 +236,49 @@ document.getElementById('hamming-distance-solution').innerText = hammingDistance
 
 
 
+// ========== 7. Finding the Longest Word in a Sentence ========== //
+
+// Using a For-Loop
+const longestWord = (text) => {
+	let wordArray = text.split(' ');
+	let maxLength = 0;
+	let result = '';
+
+	for (let i = 0; i < wordArray.length; i++) {
+		if (wordArray[i].length > maxLength) {
+			maxLength = wordArray[i].length
+			result = wordArray[i]
+		}
+	}
+
+	return result;
+}
+
+// Using .reduce()
+const longestWord2 = (text) => {
+	let result = text.split(' ').reduce((maxLengthWord, currentWord) => {
+		if (currentWord.length > maxLengthWord.length) {
+			return currentWord
+		} else {
+			return maxLengthWord
+		}
+	}, "")
+	return result;
+}
+
+// Using .sort() // Least Optimal
+const longestWord3 = (text) => {
+	let sortedArray = text.split(' ')
+						  .sort((wordA, wordB) => wordB.length - wordA.length)
+
+	return sortedArray[0];
+}
+
+document.getElementById('longest-word-solution').innerText = longestWord3("There's a Staaarman waiting in the sky");
+
+
+
+
 
 
 
