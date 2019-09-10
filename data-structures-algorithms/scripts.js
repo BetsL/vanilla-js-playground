@@ -278,6 +278,32 @@ document.getElementById('longest-word-solution').innerText = longestWord3("There
 
 
 
+// ========== 8. Search and Replace ========== //
+
+// Using .replace() // More Optimal
+const searchReplace = (str, word, newWord) => {
+	if ( word[0] === word[0].toUpperCase() ) {
+		newWord = newWord[0].toUpperCase() + newWord.slice(1)
+	}
+
+	return str.replace(word, newWord);
+}
+
+// Using Regular Expressions
+const searchReplace2 = (str, word, newWord) => {
+	let regex = new RegExp(word, 'gi');
+	if ( /[A-Z]/.test(word[0])) {
+		newWord = newWord.charAt(0).toUpperCase() + newWord.slice(1);
+	}
+
+	return str.replace(regex, newWord);
+}
+
+document.getElementById('search-replace-solution').innerText = searchReplace2('I would walk 500 miles', 'walk', 'run');
+
+
+
+
 
 
 
