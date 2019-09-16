@@ -351,6 +351,38 @@ document.getElementById('anagrams-solution').innerText = isAnagram2('silent', 'l
 
 
 
+// ========== 10. Pig Latin ========== //
+
+// An Imperative Approach
+const pigLatin = (str) => {
+	// convert string to lowercase
+	str = str.toLowerCase();
+	// initialize the array of vowels
+	const vowels = ['a', 'e', 'i', 'o', 'u'];
+	// initialize vowel index to 0 
+	let vowelIndex = 0;
+
+	if (vowels.includes(str[0])) {
+		// if first letter is a vowel
+		return str + 'way';
+	} else {
+		// if the first letter isn't a vowel i.e. is a consonant
+		for (let char of str) {
+			// loop through until the first vowel is found
+			if (vowels.includes(char)) {
+				// store the index at which the first vowels exists
+				vowelIndex = str.indexOf(char);
+				break;
+			}
+		}
+		// compose final string
+		return str.slice(vowelIndex) + str.slice(0, vowelIndex) + 'ay';
+	}
+}
+
+document.getElementById('pig-latin-solution').innerText = pigLatin('Tierney');
+
+
 
 
 
