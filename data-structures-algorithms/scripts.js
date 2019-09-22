@@ -380,6 +380,16 @@ const pigLatin = (str) => {
 	}
 }
 
+// A Declarative Approach (i.e. let's get a lil lazy ;) )
+// Much Slower ~88%
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+const pigLatin2 = (str) => {
+    return str
+    .replace(/^([aeiouy])(._)/, '$1$2way')
+    .replace(/^(_[_^aeiouy]+)(._)/, '$2$1ay')
+}
+
 document.getElementById('pig-latin-solution').innerText = pigLatin('Tierney');
 
 
