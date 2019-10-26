@@ -394,11 +394,11 @@ document.getElementById('pig-latin-solution').innerText = pigLatin('Tierney');
 
 
 
-// ========== 10. Pig Latin ========== //
+// ========== 11. Array Chunking ========== //
 
 // for ... of
 const chunkArray = (array, size) => {
-    let result = []
+    let result = [];
     for (value of array){
         let lastArray = result[result.length -1 ]
         if(!lastArray || lastArray.length == size){
@@ -407,12 +407,44 @@ const chunkArray = (array, size) => {
             lastArray.push(value)
         }
     }
-    return result
+    return result;
 }
 
 console.log(chunkArray([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 5));
 
+// .splice()
+const chunkArray2 = (array, size) => {
+	let result = [];
+	let arrayCopy = [...array];
+	while (arrayCopy.length > 0) {
+		result.push(arrayCopy.splice(0, size))
+	}
+	return result;
+}
 
+console.log(chunkArray2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 5));
+
+// .slice()
+const chunkArray3 = (array, size) => {
+	let result = [];
+	for (let i = 0; i < array.length; i += size) {
+		let chunk = array.slice(i, i + size)
+		result.push(chunk);
+	}
+	return result;
+}
+
+console.log(chunkArray3([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 5));
+
+// with recursion 
+const chunkArray4 = (array, size) => {
+	if(array.length <= size) {
+		return [array];
+	}
+	return [array.slice(0, size), ...chunkArray4(array.slice(size), size)];
+}
+
+console.log(chunkArray4([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13], 5));
 
 
 
